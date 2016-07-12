@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Folio</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script>
+    window.onload = function() {
+      var minWidth = 800;
+      
+
+			var tapeImages = $('.tapeimg');
+      var arr = [];
+      for (var i = 0; i < tapeImages.length; i++) {
+        arr.push(tapeImages[i]);
+      }
+      var counter = 1;
+      var scroller = function(){
+        var bodyWidth = parseInt($('body').css('width'));
+        if (bodyWidth >= minWidth) {
+          $('.tape').css('height', parseInt($('#image').css('height'))-85 + "px");
+          $('#footer').css('top','0');
+        } else {
+          $('.tape').css('height', parseInt($('#image').css('height'))-50 + "px");
+          $('#footer').css('top','-35px');
+          $('body').css('height', parseInt($('#image').css('height'))-30 + "px");
+        }
+        var imageFullHeight = (parseInt($(arr[0]).css('margin-bottom')) + parseInt($(arr[0]).css('height'))); //Высота элемента с отступом снизу
+        var newTop = imageFullHeight * (arr.length-4); //Общая высота ленты
+        
+        /*for (var i = 0; i < arr.length; i++) {
+          $(arr[i]).css('top', parseInt($(arr[i]).css('top'))-1+"px");          
+        }
+        if (parseInt($(arr[0]).css('top')) <= (-imageFullHeight*counter)) {
+          counter++;
+          console.log(counter);
+          $(arr[0]).css('top', (newTop-imageFullHeight) + "px");
+          var x = arr.shift();
+          arr.push(x);
+          
+          if (counter == arr.length+1) {
+            counter = 1;
+          }
+
+        }*/
+      }
+	  		scroller();
+      //var inter = setInterval (scroller, 20);
+      $( window ).resize(function() {
+        for (var i = 0; i < arr.length; i++) {
+          $(arr[i]).css('top', "0px");
+        }
+		scroller();
+       // clearInterval(inter);
+        //inter = setInterval (scroller, 20);
+
+      });
+    }
+    </script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <main class="main">
+      <img src="i/background.png" alt="" id="image">
+      <div class="container-fluid">
+        <div class="row">
+          <header>
+            <div class="logo pull-left">
+              <div class="folio">Folio<span>.<span></div>
+              <div class="photo-design">Photography & Design</div>
+            </div>
+          </header>
+
+
+          <div class="text">
+            <div class="featured"><span>FEATURED</span></div>
+            <div class="shoot"><span>Wedding Photography Shoot</span></div>
+          </div>
+
+          <div class="tape pull-right" id="tape">
+              <div><span class="pull-left">II</span><span class="pull-right">2 / 10</span></div>
+              <img src="i/img1.png" alt="" class="tapeimg">
+              <img src="i/img2.png" alt="" class="tapeimg">
+              <img src="i/img3.png" alt="" class="tapeimg">
+              <img src="i/img4.png" alt="" class="tapeimg">
+              <img src="i/img5.png" alt="" class="tapeimg">
+              <img src="i/img6.png" alt="" class="tapeimg">
+              <img src="i/img7.png" alt="" class="tapeimg">
+              <img src="i/img2.png" alt="" class="tapeimg">
+          </div>
+        </div>
+      </div>
+
+    </main>
+    <footer id="footer"><div>
+
+          <div class="pull-left">
+            <ul class="navigation">
+              <li class="active"><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="#">Services</a></li>
+              <li><a href="#">Portfolio</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+          <div class="pull-right copy">
+            Copyright Folio 2012. All Rights Reserved.
+          </div>
+
+    </div></footer>
+    <!-- jQuery (Must for Bootstrap) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <!-- Bootstrap script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  </body>
+</html>
